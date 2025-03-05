@@ -1,7 +1,8 @@
-package com.gxy.oj.model.dto.questionsubmit;
+package com.gxy.ojmodel.model.dto.questionsubmit;
 
 
-import com.gxy.oj.common.PageRequest;
+
+import com.gxy.ojcommon.common.PageRequest;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

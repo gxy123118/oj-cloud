@@ -1,4 +1,4 @@
-package com.gxy.oj.common;
+package com.gxy.ojcommon.common;
 
 /**
  * 返回工具类

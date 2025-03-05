@@ -1,4 +1,4 @@
-package com.gxy.oj.model.enums;
+package com.gxy.ojmodel.model.enums;
 
 import lombok.Getter;
 import org.apache.commons.lang3.ObjectUtils;

@@ -1,4 +1,4 @@
-package com.gxy.oj.model.vo;
+package com.gxy.ojmodel.model.vo;
 
 
 import lombok.Data;

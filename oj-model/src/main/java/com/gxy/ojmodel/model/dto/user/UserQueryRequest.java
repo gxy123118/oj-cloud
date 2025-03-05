@@ -1,9 +1,11 @@
-package com.gxy.oj.model.dto.user;
+package com.gxy.ojmodel.model.dto.user;
 
-import com.gxy.oj.common.PageRequest;
-import java.io.Serializable;
+
+import com.gxy.ojcommon.common.PageRequest;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.io.Serializable;
 
 /**
  * 用户查询请求

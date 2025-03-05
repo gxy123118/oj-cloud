@@ -1,6 +1,6 @@
-package com.gxy.oj.judge.strategy;
+package com.gxy.ojjudgeservice.judge.strategy;
 
-import com.gxy.oj.model.dto.questionsubmit.JudgeInfo;
+import com.gxy.ojmodel.model.dto.questionsubmit.JudgeInfo;
 
 public interface JudgeStrategy {
 

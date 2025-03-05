@@ -1,4 +1,4 @@
-package com.gxy.oj.constant;
+package com.gxy.ojcommon.constant;
 
 /**
  * 通用常量

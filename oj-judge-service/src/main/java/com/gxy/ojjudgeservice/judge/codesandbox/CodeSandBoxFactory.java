@@ -1,8 +1,9 @@
-package com.gxy.oj.judge.codesandbox;
+package com.gxy.ojjudgeservice.judge.codesandbox;
 
-import com.gxy.oj.judge.codesandbox.impl.ExampleCodeSandBox;
-import com.gxy.oj.judge.codesandbox.impl.RemoteCodeSandBox;
-import com.gxy.oj.judge.codesandbox.impl.ThirdPartyCodeSandBox;
+import com.gxy.ojjudgeservice.judge.codesandbox.impl.ExampleCodeSandBox;
+import com.gxy.ojjudgeservice.judge.codesandbox.impl.RemoteCodeSandBox;
+import com.gxy.ojjudgeservice.judge.codesandbox.impl.ThirdPartyCodeSandBox;
+
 
 /**
  * 沙箱工厂

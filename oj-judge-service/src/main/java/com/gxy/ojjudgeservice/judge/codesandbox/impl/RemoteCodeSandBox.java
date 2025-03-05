@@ -1,25 +1,18 @@
-package com.gxy.oj.judge.codesandbox.impl;
+package com.gxy.ojjudgeservice.judge.codesandbox.impl;
 
-import cn.hutool.http.HttpResponse;
 import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONUtil;
-import com.gxy.oj.judge.codesandbox.CodeSandBox;
-import com.gxy.oj.judge.codesandbox.model.ExecuteCodeRequest;
-import com.gxy.oj.judge.codesandbox.model.ExecuteCodeResponse;
-import com.gxy.oj.model.dto.questionsubmit.JudgeInfo;
-import com.gxy.oj.utils.SandboxResponseHandle;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
+import com.gxy.ojjudgeservice.judge.codesandbox.CodeSandBox;
+import com.gxy.ojjudgeservice.judge.codesandbox.util.SandboxResponseHandle;
+import com.gxy.ojmodel.model.codesandbox.ExecuteCodeRequest;
+import com.gxy.ojmodel.model.codesandbox.ExecuteCodeResponse;
 
-import java.util.List;
-import java.util.ArrayList;
 
 public class RemoteCodeSandBox implements CodeSandBox {
     @Override
     public ExecuteCodeResponse executeCode(ExecuteCodeRequest executeCodeRequest) {
 
-        String url = "http://192.168.146.128:8090/exec";
+        String url = "http://codesandbox/exec";
         //拿到响应数据
         String body = HttpUtil.createPost(url)
                 .body(JSONUtil.toJsonStr(executeCodeRequest))

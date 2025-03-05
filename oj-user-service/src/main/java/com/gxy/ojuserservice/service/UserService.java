@@ -1,20 +1,20 @@
-package com.gxy.oj.service;
+package com.gxy.ojuserservice.service;
+
+
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.gxy.oj.model.dto.user.UserQueryRequest;
-import com.gxy.oj.model.entity.User;
-import com.gxy.oj.model.vo.LoginUserVO;
-import com.gxy.oj.model.vo.UserVO;
-import java.util.List;
+import com.gxy.ojmodel.model.dto.user.UserQueryRequest;
+import com.gxy.ojmodel.model.entity.User;
+import com.gxy.ojmodel.model.vo.LoginUserVO;
+import com.gxy.ojmodel.model.vo.UserVO;
+
 import javax.servlet.http.HttpServletRequest;
-import me.chanjar.weixin.common.bean.WxOAuth2UserInfo;
+import java.util.List;
 
 /**
  * 用户服务
  *
- * @author <a href="https://github.com/ligxy">程序员鱼皮</a>
- * @from <a href="https://gxy.icu">编程导航知识星球</a>
  */
 public interface UserService extends IService<User> {
 
@@ -39,15 +39,6 @@ public interface UserService extends IService<User> {
     LoginUserVO userLogin(String userAccount, String userPassword, HttpServletRequest request);
 
     /**
-     * 用户登录（微信开放平台）
-     *
-     * @param wxOAuth2UserInfo 从微信获取的用户信息
-     * @param request
-     * @return 脱敏后的用户信息
-     */
-    LoginUserVO userLoginByMpOpen(WxOAuth2UserInfo wxOAuth2UserInfo, HttpServletRequest request);
-
-    /**
      * 获取当前登录用户
      *
      * @param request
@@ -62,14 +53,6 @@ public interface UserService extends IService<User> {
      * @return
      */
     User getLoginUserPermitNull(HttpServletRequest request);
-
-    /**
-     * 是否为管理员
-     *
-     * @param request
-     * @return
-     */
-    boolean isAdmin(HttpServletRequest request);
 
     /**
      * 是否为管理员

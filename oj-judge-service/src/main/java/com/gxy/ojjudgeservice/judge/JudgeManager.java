@@ -1,14 +1,13 @@
-package com.gxy.oj.judge;
+package com.gxy.ojjudgeservice.judge;
 
-import com.gxy.oj.judge.strategy.DefaultJudgeStrategy;
-import com.gxy.oj.judge.strategy.JavaJudgeStrategy;
-import com.gxy.oj.judge.strategy.JudgeContext;
-import com.gxy.oj.model.dto.questionsubmit.JudgeInfo;
-import com.gxy.oj.model.entity.QuestionSubmit;
+
+import com.gxy.ojjudgeservice.judge.strategy.DefaultJudgeStrategy;
+import com.gxy.ojjudgeservice.judge.strategy.JavaJudgeStrategy;
+import com.gxy.ojjudgeservice.judge.strategy.JudgeContext;
+import com.gxy.ojmodel.model.dto.questionsubmit.JudgeInfo;
+import com.gxy.ojmodel.model.entity.QuestionSubmit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.annotation.Resource;
 
 @Service
 public class JudgeManager {

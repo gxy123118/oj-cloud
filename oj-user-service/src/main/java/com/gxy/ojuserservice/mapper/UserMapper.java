@@ -1,14 +1,15 @@
-package com.gxy.oj.mapper;
+package com.gxy.ojuserservice.mapper;
+
+
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.gxy.oj.model.entity.User;
+import com.gxy.ojmodel.model.entity.User;
 
 /**
  * 用户数据库操作
  *
- * @author <a href="https://github.com/ligxy">程序员鱼皮</a>
- * @from <a href="https://gxy.icu">编程导航知识星球</a>
  */
+
 public interface UserMapper extends BaseMapper<User> {
 
 }

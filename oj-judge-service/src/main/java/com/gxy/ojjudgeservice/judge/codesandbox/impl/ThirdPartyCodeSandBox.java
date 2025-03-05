@@ -1,9 +1,10 @@
-package com.gxy.oj.judge.codesandbox.impl;
+package com.gxy.ojjudgeservice.judge.codesandbox.impl;
 
-import com.gxy.oj.judge.codesandbox.CodeSandBox;
-import com.gxy.oj.judge.codesandbox.model.ExecuteCodeRequest;
-import com.gxy.oj.judge.codesandbox.model.ExecuteCodeResponse;
-import com.gxy.oj.model.dto.questionsubmit.JudgeInfo;
+
+import com.gxy.ojjudgeservice.judge.codesandbox.CodeSandBox;
+import com.gxy.ojmodel.model.codesandbox.ExecuteCodeRequest;
+import com.gxy.ojmodel.model.codesandbox.ExecuteCodeResponse;
+import com.gxy.ojmodel.model.dto.questionsubmit.JudgeInfo;
 
 import java.util.ArrayList;
 

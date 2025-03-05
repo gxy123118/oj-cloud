@@ -1,8 +1,7 @@
-package com.gxy.oj.judge;
+package com.gxy.ojjudgeservice.judge;
 
-import com.gxy.oj.model.dto.questionsubmit.JudgeInfo;
-import com.gxy.oj.model.entity.QuestionSubmit;
-import com.gxy.oj.model.vo.QuestionSubmitVO;
+
+import com.gxy.ojmodel.model.entity.QuestionSubmit;
 
 public interface JudgeService {
     QuestionSubmit doJudge(Long id);

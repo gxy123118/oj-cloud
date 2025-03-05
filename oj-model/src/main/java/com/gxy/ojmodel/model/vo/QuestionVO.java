@@ -1,18 +1,16 @@
-package com.gxy.oj.model.vo;
+package com.gxy.ojmodel.model.vo;
 
 
 import cn.hutool.json.JSONUtil;
-import com.gxy.oj.model.dto.question.JudgeConfig;
-import com.gxy.oj.model.entity.Post;
-import com.gxy.oj.model.entity.Question;
 
-import java.util.List;
-
+import com.gxy.ojmodel.model.dto.question.JudgeConfig;
+import com.gxy.ojmodel.model.entity.Question;
 import lombok.Data;
 import org.springframework.beans.BeanUtils;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 返回前端题目

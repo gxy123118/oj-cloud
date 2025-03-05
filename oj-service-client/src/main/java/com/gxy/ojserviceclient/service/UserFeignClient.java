@@ -1,91 +1,32 @@
 package com.gxy.ojserviceclient.service;
 
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.service.IService;
-import com.gxy.ojmodel.model.dto.user.UserQueryRequest;
+
+import com.gxy.ojcommon.common.ErrorCode;
+import com.gxy.ojcommon.exception.BusinessException;
+
 import com.gxy.ojmodel.model.entity.User;
-import com.gxy.ojmodel.model.vo.LoginUserVO;
 import com.gxy.ojmodel.model.vo.UserVO;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.Set;
+
+import static com.gxy.ojcommon.constant.UserConstant.USER_LOGIN_STATE;
 
 /**
  * 用户服务
- *
  */
-@FeignClient(name = "user-service")
-public interface UserFignClient {
-
-    /**
-     * 用户注册
-     *
-     * @param userAccount   用户账户
-     * @param userPassword  用户密码
-     * @param checkPassword 校验密码
-     * @return 新用户 id
-     */
-    long userRegister(String userAccount, String userPassword, String checkPassword);
-
-    /**
-     * 用户登录
-     *
-     * @param userAccount  用户账户
-     * @param userPassword 用户密码
-     * @param request
-     * @return 脱敏后的用户信息
-     */
-    LoginUserVO userLogin(String userAccount, String userPassword, HttpServletRequest request);
+@FeignClient(name = "oj-user-service", path = "/api/user/inner")
+public interface UserFeignClient {
+    @GetMapping("/id")
+    User getById(@RequestParam("id") Long userId);
 
 
-    /**
-     * 获取当前登录用户
-     *
-     * @param request
-     * @return
-     */
-    User getLoginUser(HttpServletRequest request);
-
-    /**
-     * 获取当前登录用户（允许未登录）
-     *
-     * @param request
-     * @return
-     */
-    User getLoginUserPermitNull(HttpServletRequest request);
-
-    /**
-     * 是否为管理员
-     *
-     * @param request
-     * @return
-     */
-    boolean isAdmin(HttpServletRequest request);
-
-    /**
-     * 是否为管理员
-     *
-     * @param user
-     * @return
-     */
-    boolean isAdmin(User user);
-
-    /**
-     * 用户注销
-     *
-     * @param request
-     * @return
-     */
-    boolean userLogout(HttpServletRequest request);
-
-    /**
-     * 获取脱敏的已登录用户信息
-     *
-     * @return
-     */
-    LoginUserVO getLoginUserVO(User user);
+    @PostMapping("/list")
+    List<User> listByIds(@RequestBody Set<Long> userIdSet);
 
     /**
      * 获取脱敏的用户信息
@@ -93,22 +34,27 @@ public interface UserFignClient {
      * @param user
      * @return
      */
-    UserVO getUserVO(User user);
 
-    /**
-     * 获取脱敏的用户信息
-     *
-     * @param userList
-     * @return
-     */
-    List<UserVO> getUserVO(List<User> userList);
+    @PostMapping("/get/user/vo")
+    UserVO getUserVO(@RequestBody User user);
 
-    /**
-     * 获取查询条件
-     *
-     * @param userQueryRequest
-     * @return
-     */
-    QueryWrapper<User> getQueryWrapper(UserQueryRequest userQueryRequest);
 
+    default User getLoginUser(HttpServletRequest request) {
+        // 先判断是否已登录
+        Object userObj = request.getSession().getAttribute(USER_LOGIN_STATE);
+        User currentUser = (User) userObj;
+        if (currentUser == null || currentUser.getId() == null) {
+            throw new BusinessException(ErrorCode.NOT_LOGIN_ERROR);
+        }
+        // 从数据库查询（追求性能的话可以注释，直接走缓存）
+        long userId = currentUser.getId();
+        currentUser = this.getById(userId);
+        if (currentUser == null) {
+            throw new BusinessException(ErrorCode.NOT_LOGIN_ERROR);
+        }
+        return currentUser;
+    }
+
+    @PostMapping("isAdmin")
+    boolean isAdmin(@RequestBody User loginUser);
 }

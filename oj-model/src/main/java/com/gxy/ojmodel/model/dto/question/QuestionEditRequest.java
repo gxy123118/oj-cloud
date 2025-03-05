@@ -1,9 +1,8 @@
-package com.gxy.oj.model.dto.question;
+package com.gxy.ojmodel.model.dto.question;
 
 import lombok.Data;
 
 import java.io.Serializable;
-
 import java.util.List;
 
 /**

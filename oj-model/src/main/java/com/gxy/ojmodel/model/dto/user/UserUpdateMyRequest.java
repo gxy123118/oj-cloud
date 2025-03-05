@@ -1,7 +1,8 @@
-package com.gxy.oj.model.dto.user;
+package com.gxy.ojmodel.model.dto.user;
+
+import lombok.Data;
 
 import java.io.Serializable;
-import lombok.Data;
 
 /**
  * 用户更新个人信息请求

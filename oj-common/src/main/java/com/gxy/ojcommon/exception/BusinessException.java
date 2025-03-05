@@ -1,6 +1,7 @@
-package com.gxy.oj.exception;
+package com.gxy.ojcommon.exception;
 
-import com.gxy.oj.common.ErrorCode;
+
+import com.gxy.ojcommon.common.ErrorCode;
 
 /**
  * 自定义异常类

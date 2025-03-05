@@ -1,16 +1,17 @@
-package com.gxy.oj.judge.strategy;
+package com.gxy.ojjudgeservice.judge.strategy;
 
 import cn.hutool.json.JSONUtil;
-import com.gxy.oj.judge.codesandbox.CodeSandBox;
-import com.gxy.oj.judge.codesandbox.CodeSandBoxFactory;
-import com.gxy.oj.judge.codesandbox.model.ExecuteCodeRequest;
-import com.gxy.oj.judge.codesandbox.model.ExecuteCodeResponse;
-import com.gxy.oj.model.dto.question.JudgeCase;
-import com.gxy.oj.model.dto.question.JudgeConfig;
-import com.gxy.oj.model.dto.questionsubmit.JudgeInfo;
-import com.gxy.oj.model.entity.Question;
-import com.gxy.oj.model.entity.QuestionSubmit;
-import com.gxy.oj.model.enums.JudgeInfoMessageEnum;
+
+import com.gxy.ojjudgeservice.judge.codesandbox.CodeSandBox;
+import com.gxy.ojjudgeservice.judge.codesandbox.CodeSandBoxFactory;
+import com.gxy.ojmodel.model.codesandbox.ExecuteCodeRequest;
+import com.gxy.ojmodel.model.codesandbox.ExecuteCodeResponse;
+import com.gxy.ojmodel.model.dto.question.JudgeCase;
+import com.gxy.ojmodel.model.dto.question.JudgeConfig;
+import com.gxy.ojmodel.model.dto.questionsubmit.JudgeInfo;
+import com.gxy.ojmodel.model.entity.Question;
+import com.gxy.ojmodel.model.entity.QuestionSubmit;
+import com.gxy.ojmodel.model.enums.JudgeInfoMessageEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -71,7 +72,7 @@ public class JavaJudgeStrategy implements JudgeStrategy {
         }
         log.info(memory.toString());
         log.info(time.toString());
-        System.out.println(time>=timeLimit);
+//        System.out.println(time>=timeLimit);
         if (time > timeLimit) {
             // 时间超出限制
             judgeInfoMessageEnum = JudgeInfoMessageEnum.TIME_LIMIT_EXCEEDED;

@@ -1,13 +1,11 @@
-package com.gxy.oj.judge.codesandbox.proxy;
+package com.gxy.ojjudgeservice.judge.codesandbox.proxy;
 
-import com.gxy.oj.judge.codesandbox.CodeSandBox;
-import com.gxy.oj.judge.codesandbox.model.ExecuteCodeRequest;
-import com.gxy.oj.judge.codesandbox.model.ExecuteCodeResponse;
-import com.gxy.oj.utils.SandboxResponseHandle;
+
+import com.gxy.ojjudgeservice.judge.codesandbox.CodeSandBox;
+import com.gxy.ojjudgeservice.judge.codesandbox.util.SandboxResponseHandle;
+import com.gxy.ojmodel.model.codesandbox.ExecuteCodeRequest;
+import com.gxy.ojmodel.model.codesandbox.ExecuteCodeResponse;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.BeanUtils;
-
-import java.util.List;
 
 @AllArgsConstructor
 public class CodeSandBoxProxy implements CodeSandBox {

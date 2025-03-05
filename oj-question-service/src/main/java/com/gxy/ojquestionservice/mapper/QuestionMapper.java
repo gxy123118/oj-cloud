@@ -1,7 +1,8 @@
-package com.gxy.oj.mapper;
+package com.gxy.ojquestionservice.mapper;
 
-import com.gxy.oj.model.entity.Question;
+
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.gxy.ojmodel.model.entity.Question;
 
 /**
 * @author Baaadman

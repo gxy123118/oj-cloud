@@ -1,6 +1,7 @@
-package com.gxy.oj.common;
+package com.gxy.ojcommon.common;
 
-import com.gxy.oj.constant.CommonConstant;
+
+import com.gxy.ojcommon.constant.CommonConstant;
 import lombok.Data;
 
 /**

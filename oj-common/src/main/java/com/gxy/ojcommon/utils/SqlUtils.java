@@ -1,4 +1,4 @@
-package com.gxy.oj.utils;
+package com.gxy.ojcommon.utils;
 
 import org.apache.commons.lang3.StringUtils;
 

@@ -1,4 +1,4 @@
-package com.gxy.oj.model.dto.questionsubmit;
+package com.gxy.ojmodel.model.dto.questionsubmit;
 
 
 import lombok.Data;

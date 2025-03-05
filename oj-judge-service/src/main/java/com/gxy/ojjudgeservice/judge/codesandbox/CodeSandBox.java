@@ -1,7 +1,7 @@
-package com.gxy.oj.judge.codesandbox;
+package com.gxy.ojjudgeservice.judge.codesandbox;
 
-import com.gxy.oj.judge.codesandbox.model.ExecuteCodeRequest;
-import com.gxy.oj.judge.codesandbox.model.ExecuteCodeResponse;
+import com.gxy.ojmodel.model.codesandbox.ExecuteCodeRequest;
+import com.gxy.ojmodel.model.codesandbox.ExecuteCodeResponse;
 
 public interface CodeSandBox {
 

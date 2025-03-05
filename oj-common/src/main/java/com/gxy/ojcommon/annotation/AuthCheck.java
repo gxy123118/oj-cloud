@@ -1,4 +1,4 @@
-package com.gxy.oj.annotation;
+package com.gxy.ojcommon.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

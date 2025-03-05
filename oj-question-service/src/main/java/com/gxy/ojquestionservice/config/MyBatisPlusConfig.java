@@ -1,4 +1,4 @@
-package com.gxy.ojcommon.config;
+package com.gxy.ojquestionservice.config;
 
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
  * @author https://github.com/ligxy
  */
 @Configuration
-@MapperScan("com.gxy.oj.mapper")
+@MapperScan("com.gxy.ojquestionservice.mapper")
 public class MyBatisPlusConfig {
 
     /**

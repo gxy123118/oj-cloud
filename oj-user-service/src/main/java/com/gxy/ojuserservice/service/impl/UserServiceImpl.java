@@ -1,37 +1,36 @@
-package com.gxy.oj.service.impl;
-
-import static com.gxy.oj.constant.UserConstant.USER_LOGIN_STATE;
+package com.gxy.ojuserservice.service.impl;
 
 import cn.hutool.core.collection.CollUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.gxy.oj.common.ErrorCode;
-import com.gxy.oj.constant.CommonConstant;
-import com.gxy.oj.exception.BusinessException;
-import com.gxy.oj.mapper.UserMapper;
-import com.gxy.oj.model.dto.user.UserQueryRequest;
-import com.gxy.oj.model.entity.User;
-import com.gxy.oj.model.enums.UserRoleEnum;
-import com.gxy.oj.model.vo.LoginUserVO;
-import com.gxy.oj.model.vo.UserVO;
-import com.gxy.oj.service.UserService;
-import com.gxy.oj.utils.SqlUtils;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-import javax.servlet.http.HttpServletRequest;
+import com.gxy.ojcommon.common.ErrorCode;
+import com.gxy.ojcommon.constant.CommonConstant;
+import com.gxy.ojcommon.exception.BusinessException;
+import com.gxy.ojcommon.utils.SqlUtils;
+import com.gxy.ojmodel.model.dto.user.UserQueryRequest;
+import com.gxy.ojmodel.model.entity.User;
+import com.gxy.ojmodel.model.enums.UserRoleEnum;
+import com.gxy.ojmodel.model.vo.LoginUserVO;
+import com.gxy.ojmodel.model.vo.UserVO;
+import com.gxy.ojuserservice.mapper.UserMapper;
+import com.gxy.ojuserservice.service.UserService;
 import lombok.extern.slf4j.Slf4j;
-import me.chanjar.weixin.common.bean.WxOAuth2UserInfo;
+
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static com.gxy.ojcommon.constant.UserConstant.USER_LOGIN_STATE;
+
 /**
  * 用户服务实现
- *
- * @author <a href="https://github.com/ligxy">程序员鱼皮</a>
- * @from <a href="https://gxy.icu">编程导航知识星球</a>
  */
 @Service
 @Slf4j
@@ -109,37 +108,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         return this.getLoginUserVO(user);
     }
 
-    @Override
-    public LoginUserVO userLoginByMpOpen(WxOAuth2UserInfo wxOAuth2UserInfo, HttpServletRequest request) {
-        String unionId = wxOAuth2UserInfo.getUnionId();
-        String mpOpenId = wxOAuth2UserInfo.getOpenid();
-        // 单机锁
-        synchronized (unionId.intern()) {
-            // 查询用户是否已存在
-            QueryWrapper<User> queryWrapper = new QueryWrapper<>();
-            queryWrapper.eq("unionId", unionId);
-            User user = this.getOne(queryWrapper);
-            // 被封号，禁止登录
-            if (user != null && UserRoleEnum.BAN.getValue().equals(user.getUserRole())) {
-                throw new BusinessException(ErrorCode.FORBIDDEN_ERROR, "该用户已被封，禁止登录");
-            }
-            // 用户不存在则创建
-            if (user == null) {
-                user = new User();
-                user.setUnionId(unionId);
-                user.setMpOpenId(mpOpenId);
-                user.setUserAvatar(wxOAuth2UserInfo.getHeadImgUrl());
-                user.setUserName(wxOAuth2UserInfo.getNickname());
-                boolean result = this.save(user);
-                if (!result) {
-                    throw new BusinessException(ErrorCode.SYSTEM_ERROR, "登录失败");
-                }
-            }
-            // 记录用户的登录态
-            request.getSession().setAttribute(USER_LOGIN_STATE, user);
-            return getLoginUserVO(user);
-        }
-    }
 
     /**
      * 获取当前登录用户
@@ -183,19 +151,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         return this.getById(userId);
     }
 
-    /**
-     * 是否为管理员
-     *
-     * @param request
-     * @return
-     */
-    @Override
-    public boolean isAdmin(HttpServletRequest request) {
-        // 仅管理员可查询
-        Object userObj = request.getSession().getAttribute(USER_LOGIN_STATE);
-        User user = (User) userObj;
-        return isAdmin(user);
-    }
 
     @Override
     public boolean isAdmin(User user) {

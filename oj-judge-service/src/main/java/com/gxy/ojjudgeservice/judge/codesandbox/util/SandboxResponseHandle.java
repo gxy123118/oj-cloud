@@ -1,6 +1,7 @@
-package com.gxy.oj.utils;
+package com.gxy.ojjudgeservice.judge.codesandbox.util;
 
-import com.gxy.oj.judge.codesandbox.model.ExecuteCodeResponse;
+
+import com.gxy.ojmodel.model.codesandbox.ExecuteCodeResponse;
 import org.springframework.beans.BeanUtils;
 
 import java.util.List;

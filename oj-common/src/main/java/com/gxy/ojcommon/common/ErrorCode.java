@@ -1,4 +1,4 @@
-package com.gxy.oj.common;
+package com.gxy.ojcommon.common;
 
 /**
  * 自定义错误码

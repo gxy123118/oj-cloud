@@ -1,4 +1,4 @@
-package com.gxy.oj.constant;
+package com.gxy.ojcommon.constant;
 
 /**
  * 用户常量

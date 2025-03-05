@@ -1,7 +1,8 @@
-package com.gxy.oj.common;
+package com.gxy.ojcommon.common;
+
+import lombok.Data;
 
 import java.io.Serializable;
-import lombok.Data;
 
 /**
  * 通用返回类

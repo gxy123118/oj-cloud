@@ -1,12 +1,12 @@
-package com.gxy.oj.service;
+package com.gxy.ojquestionservice.service;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.gxy.oj.model.dto.question.QuestionQueryRequest;
-import com.gxy.oj.model.entity.Question;
-import com.gxy.oj.model.vo.QuestionVO;
+import com.gxy.ojmodel.model.dto.question.QuestionQueryRequest;
+import com.gxy.ojmodel.model.entity.Question;
+import com.gxy.ojmodel.model.vo.QuestionVO;
 
 import javax.servlet.http.HttpServletRequest;
 

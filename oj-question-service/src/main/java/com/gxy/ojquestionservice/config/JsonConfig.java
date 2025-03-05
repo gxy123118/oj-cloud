@@ -1,4 +1,4 @@
-package com.gxy.oj.config;
+package com.gxy.ojquestionservice.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
